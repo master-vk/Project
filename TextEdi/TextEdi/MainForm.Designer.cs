@@ -33,6 +33,8 @@
             this.rtbox = new System.Windows.Forms.RichTextBox();
             this.pnlMain = new System.Windows.Forms.Panel();
             this.btnOk = new System.Windows.Forms.Button();
+            this.btnUndo = new System.Windows.Forms.Button();
+            this.btnRedo = new System.Windows.Forms.Button();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.btnOpen = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
@@ -48,8 +50,6 @@
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.btnUndo = new System.Windows.Forms.Button();
-            this.btnRedo = new System.Windows.Forms.Button();
             this.pnlMain.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -92,6 +92,36 @@
             this.btnOk.UseVisualStyleBackColor = false;
             this.btnOk.Visible = false;
             this.btnOk.Click += new System.EventHandler(this.button1_Click_1);
+            // 
+            // btnUndo
+            // 
+            this.btnUndo.BackColor = System.Drawing.Color.DodgerBlue;
+            this.btnUndo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUndo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnUndo.ForeColor = System.Drawing.Color.White;
+            this.btnUndo.Location = new System.Drawing.Point(107, 323);
+            this.btnUndo.Name = "btnUndo";
+            this.btnUndo.Size = new System.Drawing.Size(61, 66);
+            this.btnUndo.TabIndex = 7;
+            this.btnUndo.Text = "Undo";
+            this.btnUndo.UseVisualStyleBackColor = false;
+            this.btnUndo.Visible = false;
+            this.btnUndo.Click += new System.EventHandler(this.btnUndo_Click_1);
+            // 
+            // btnRedo
+            // 
+            this.btnRedo.BackColor = System.Drawing.Color.DodgerBlue;
+            this.btnRedo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRedo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnRedo.ForeColor = System.Drawing.Color.White;
+            this.btnRedo.Location = new System.Drawing.Point(174, 323);
+            this.btnRedo.Name = "btnRedo";
+            this.btnRedo.Size = new System.Drawing.Size(61, 66);
+            this.btnRedo.TabIndex = 6;
+            this.btnRedo.Text = "Redo";
+            this.btnRedo.UseVisualStyleBackColor = false;
+            this.btnRedo.Visible = false;
+            this.btnRedo.Click += new System.EventHandler(this.btnRedo_Click);
             // 
             // txtSearch
             // 
@@ -142,7 +172,7 @@
             this.panel1.Controls.Add(this.listBox2);
             this.panel1.Controls.Add(this.btnColor);
             this.panel1.Controls.Add(this.listBox1);
-            this.panel1.Location = new System.Drawing.Point(40, 263);
+            this.panel1.Location = new System.Drawing.Point(40, 264);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(353, 54);
             this.panel1.TabIndex = 3;
@@ -228,36 +258,6 @@
             // 
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // btnUndo
-            // 
-            this.btnUndo.BackColor = System.Drawing.Color.DodgerBlue;
-            this.btnUndo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUndo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnUndo.ForeColor = System.Drawing.Color.White;
-            this.btnUndo.Location = new System.Drawing.Point(107, 323);
-            this.btnUndo.Name = "btnUndo";
-            this.btnUndo.Size = new System.Drawing.Size(61, 66);
-            this.btnUndo.TabIndex = 7;
-            this.btnUndo.Text = "Undo";
-            this.btnUndo.UseVisualStyleBackColor = false;
-            this.btnUndo.Visible = false;
-            this.btnUndo.Click += new System.EventHandler(this.btnUndo_Click_1);
-            // 
-            // btnRedo
-            // 
-            this.btnRedo.BackColor = System.Drawing.Color.DodgerBlue;
-            this.btnRedo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRedo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnRedo.ForeColor = System.Drawing.Color.White;
-            this.btnRedo.Location = new System.Drawing.Point(174, 323);
-            this.btnRedo.Name = "btnRedo";
-            this.btnRedo.Size = new System.Drawing.Size(61, 66);
-            this.btnRedo.TabIndex = 6;
-            this.btnRedo.Text = "Redo";
-            this.btnRedo.UseVisualStyleBackColor = false;
-            this.btnRedo.Visible = false;
-            this.btnRedo.Click += new System.EventHandler(this.btnRedo_Click);
             // 
             // MainForm
             // 

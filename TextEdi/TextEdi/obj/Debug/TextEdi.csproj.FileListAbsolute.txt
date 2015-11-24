@@ -6,3 +6,12 @@ C:\Users\Вадим\Documents\Visual Studio 2013\Projects\TextEdi\TextEdi\obj\De
 C:\Users\Вадим\Documents\Visual Studio 2013\Projects\TextEdi\TextEdi\obj\Debug\TextEdi.exe
 C:\Users\Вадим\Documents\Visual Studio 2013\Projects\TextEdi\TextEdi\obj\Debug\TextEdi.pdb
 C:\Users\Вадим\Documents\Visual Studio 2013\Projects\TextEdi\TextEdi\obj\Debug\TextEdi.MainForm.resources
+D:\GIT\TextEdi\TextEdi\bin\Debug\TextEdi.exe.config
+D:\GIT\TextEdi\TextEdi\obj\Debug\TextEdi.exe
+D:\GIT\TextEdi\TextEdi\obj\Debug\TextEdi.pdb
+D:\GIT\TextEdi\TextEdi\obj\Debug\TextEdi.csprojResolveAssemblyReference.cache
+D:\GIT\TextEdi\TextEdi\obj\Debug\TextEdi.MainForm.resources
+D:\GIT\TextEdi\TextEdi\obj\Debug\TextEdi.csproj.GenerateResource.Cache
+D:\GIT\TextEdi\TextEdi\bin\Debug\TextEdi.exe
+D:\GIT\TextEdi\TextEdi\bin\Debug\TextEdi.pdb
+D:\GIT\TextEdi\TextEdi\obj\Debug\TextEdi.Properties.Resources.resources
