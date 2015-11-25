@@ -1,7 +1,6 @@
 c:\users\вадим\documents\visual studio 2015\Projects\DiningPhilosophers\DiningPhilosophers\bin\Debug\DiningPhilosophers.exe.config
 c:\users\вадим\documents\visual studio 2015\Projects\DiningPhilosophers\DiningPhilosophers\bin\Debug\DiningPhilosophers.exe
 c:\users\вадим\documents\visual studio 2015\Projects\DiningPhilosophers\DiningPhilosophers\bin\Debug\DiningPhilosophers.pdb
-c:\users\вадим\documents\visual studio 2015\Projects\DiningPhilosophers\DiningPhilosophers\obj\Debug\DiningPhilosophers.csprojResolveAssemblyReference.cache
 c:\users\вадим\documents\visual studio 2015\Projects\DiningPhilosophers\DiningPhilosophers\obj\Debug\MainWindow.g.cs
 c:\users\вадим\documents\visual studio 2015\Projects\DiningPhilosophers\DiningPhilosophers\obj\Debug\App.g.cs
 c:\users\вадим\documents\visual studio 2015\Projects\DiningPhilosophers\DiningPhilosophers\obj\Debug\DiningPhilosophers_MarkupCompile.cache

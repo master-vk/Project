@@ -8,108 +8,100 @@ using System.Threading.Tasks;
 namespace DiningPhilosophers
 {
     public delegate void Sender(object sender, PhilosopherEventArgs e);
+
     enum Fork
     {
         Left,
         Right
     }
+
     class Philosopher
     {
-        public Philosopher(string name, bool leftFork, bool rightFork, Semaphore semaphore)
+        public Philosopher(string name, ForkBool leftfork, ForkBool rightfork, Semaphore semaPhore)
         {
-            this.semaphore = semaphore;
-            thread = new Thread(Action);
+            semaphore = semaPhore;
             this.Name = name;
-            
+            leftFork = leftfork as ForkBool;
+            rightFork = rightfork as ForkBool;
         }
 
-        Semaphore semaphore = null;
+
+        public string Name { get; }
         public event Sender Think;
         public event Sender EatEvent;
         public event Sender PutFork;
-        public event Sender GivedFork;
+        public event Sender TakedFork;
 
-        public void StartEat()
-        {
-            thread.Start();
-        }
 
-        void Action()
+        public void Action()
         {
-            Thread.Sleep(2000);
             while (true)
             {
+                Thread.Sleep(random.Next(1000, 3000));
                 semaphore.WaitOne();
+
+                Think(this, new PhilosopherEventArgs("Think and\n wait left fork"));
                 ThinkWaitLeftFork();
-                semaphore.Release();
 
-                semaphore.WaitOne();
+                Think(this, new PhilosopherEventArgs("Think and wait right fork"));
                 ThinkWaitRightFork();
-                semaphore.Release();
-
-                semaphore.WaitOne();
+                
                 Eat();
-                semaphore.Release();
 
-                semaphore.WaitOne();
                 PutLeftFork();
-                semaphore.Release();
 
-                semaphore.WaitOne();
                 PutRightFork();
                 semaphore.Release();
-
             }
-
         }
 
         private void PutRightFork()
         {
-            rightFork = false;
             PutFork(this, new PhilosopherEventArgs("Put right fork",Fork.Right));
+            Thread.Sleep(random.Next(1000,3000));
         }
 
         private void PutLeftFork()
         {
-            leftFork = false;
             PutFork(this, new PhilosopherEventArgs("Put right fork", Fork.Left));
+            Thread.Sleep(random.Next(1000, 3000));
         }
 
         private void Eat()
         {
             EatEvent(this, new PhilosopherEventArgs("I'm Eat"));
+            Thread.Sleep(5000);
         }
 
         private void ThinkWaitRightFork()
         {
-            Think(this, new PhilosopherEventArgs("Think and wait right fork"));
-
             while (true)
             {
-                if (rightFork)
+                if (rightFork.Fork)
                 {
-                    GivedFork(this, new PhilosopherEventArgs("Gived right fork"));
+                    TakedFork(this, new PhilosopherEventArgs("Taked right fork",Fork.Right));
                     break;
                 }
             }
+            Thread.Sleep(random.Next(1000, 3000));
         }
 
         private void ThinkWaitLeftFork()
         {
-            Think(this, new PhilosopherEventArgs("Think and\n wait left fork"));
-
             while (true)
             {
-                if (leftFork)
+                if (leftFork.Fork)
                 {
-                    GivedFork(this, new PhilosopherEventArgs("Gived left fork"));
+                    TakedFork(this, new PhilosopherEventArgs("Taked left fork", Fork.Left));
                     break;
                 }
             }
+            Thread.Sleep(random.Next(1000, 3000));
         }
-        bool leftFork = false;
-        bool rightFork = false;
-        Thread thread = null;
-        public string Name { get; set; }
+
+        ForkBool leftFork = null;
+        ForkBool rightFork = null;
+        Random random = new Random();
+        Semaphore semaphore = null;
     }
 }

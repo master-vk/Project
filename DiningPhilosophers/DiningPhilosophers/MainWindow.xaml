@@ -5,22 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DiningPhilosophers"
         mc:Ignorable="d"
-        Title="MainWindow" Height="830" Width="800" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="MainWindow" Height="820" Width="800" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.Background>
             <ImageBrush/>
         </Grid.Background>
-        <Image x:Name="image" 
+        <!--<Image x:Name="image" 
                Source="c:\users\вадим\documents\visual studio 2015\Projects\DiningPhilosophers\DiningPhilosophers\800px-Dining_philosophers.png" 
                HorizontalAlignment="Center"   VerticalAlignment="Center" Margin="45,0,47,0" >
 
-        </Image>
+        </Image>-->
         <Ellipse x:Name="el3"  Fill="Violet" HorizontalAlignment="Left" Height="150" Margin="157,610,0,0" Stroke="Black" VerticalAlignment="Top" Width="110"/>
-        <Ellipse x:Name="el0" Fill="Blue" HorizontalAlignment="Left" Height="170" Margin="315,36,0,0" Stroke="Black" VerticalAlignment="Top" Width="147"/>
+        <Ellipse x:Name="el0" Fill="Blue" HorizontalAlignment="Left" Height="154" Margin="344,50,0,0" Stroke="Black" VerticalAlignment="Top" Width="123"/>
         <Ellipse x:Name="el1"  Fill="Red" HorizontalAlignment="Left" Height="150" Margin="637,255,0,0" Stroke="Black" VerticalAlignment="Top" Width="106"/>
         <Ellipse x:Name="el4" Fill="Yellow" HorizontalAlignment="Left" Height="146" Margin="51,253,0,0" Stroke="Black" VerticalAlignment="Top" Width="108"/>
         <Ellipse x:Name="el2"  Fill="Green" HorizontalAlignment="Left" Height="150" Margin="520,614,0,0" Stroke="Black" VerticalAlignment="Top" Width="108"/>
-        <Ellipse x:Name="elfolk3" Fill="Brown" HorizontalAlignment="Left" Height="74" Margin="269,456,0,0" Stroke="Black" VerticalAlignment="Top" Width="28" RenderTransformOrigin="0.347,-1.406">
+        <Ellipse x:Name="elfork3" Fill="Brown" HorizontalAlignment="Left" Height="74" Margin="269,456,0,0" Stroke="Black" VerticalAlignment="Top" Width="28" RenderTransformOrigin="0.347,-1.406">
             <Ellipse.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -30,7 +30,7 @@
                 </TransformGroup>
             </Ellipse.RenderTransform>
         </Ellipse>
-        <Ellipse x:Name="elfolk4" Fill="Brown" HorizontalAlignment="Left" Height="84" Margin="95,210,0,0" Stroke="Black" VerticalAlignment="Top" Width="30" RenderTransformOrigin="0.347,-1.406">
+        <Ellipse x:Name="elfork4" Fill="Brown" HorizontalAlignment="Left" Height="84" Margin="95,210,0,0" Stroke="Black" VerticalAlignment="Top" Width="30" RenderTransformOrigin="0.347,-1.406">
             <Ellipse.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -40,7 +40,7 @@
                 </TransformGroup>
             </Ellipse.RenderTransform>
         </Ellipse>
-        <Ellipse x:Name="elfolk2" Fill="Brown" HorizontalAlignment="Left" Height="80" Margin="279,470,0,0" Stroke="Black" VerticalAlignment="Top" Width="29" RenderTransformOrigin="0.347,-1.406">
+        <Ellipse x:Name="elfork2" Fill="Brown" HorizontalAlignment="Left" Height="80" Margin="279,470,0,0" Stroke="Black" VerticalAlignment="Top" Width="29" RenderTransformOrigin="0.347,-1.406">
             <Ellipse.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -50,7 +50,7 @@
                 </TransformGroup>
             </Ellipse.RenderTransform>
         </Ellipse>
-        <Ellipse x:Name="elfolk0" Fill="Brown" HorizontalAlignment="Left" Height="71" Margin="474,227,0,0" Stroke="Black" VerticalAlignment="Top" Width="22" RenderTransformOrigin="0.347,-1.406">
+        <Ellipse x:Name="elfork0" Fill="Brown" HorizontalAlignment="Left" Height="77" Margin="483,226,0,0" Stroke="Black" VerticalAlignment="Top" Width="29" RenderTransformOrigin="0.347,-1.406">
             <Ellipse.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -60,7 +60,7 @@
                 </TransformGroup>
             </Ellipse.RenderTransform>
         </Ellipse>
-        <Ellipse x:Name="elfolk1" Fill="Brown" HorizontalAlignment="Left" Height="69" Margin="560,530,0,0" Stroke="Black" VerticalAlignment="Top" Width="24" RenderTransformOrigin="0.347,-1.406">
+        <Ellipse x:Name="elfork1" Fill="Brown" HorizontalAlignment="Left" Height="69" Margin="560,530,0,0" Stroke="Black" VerticalAlignment="Top" Width="24" RenderTransformOrigin="0.347,-1.406">
             <Ellipse.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -70,11 +70,11 @@
                 </TransformGroup>
             </Ellipse.RenderTransform>
         </Ellipse>
-        <Label x:Name="label4" Content="Label" HorizontalAlignment="Left" Margin="51,180,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="label2" Content="Label" HorizontalAlignment="Left" Margin="665,573,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.526,0.346"/>
-        <Label x:Name="label3" Content="Label" HorizontalAlignment="Left" Margin="51,565,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="label1" Content="Label" HorizontalAlignment="Left" Margin="590,180,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="label0" Content="Label" HorizontalAlignment="Left" Margin="485,36,0,0" VerticalAlignment="Top" RenderTransformOrigin="3.132,-0.423"/>
+        <Label x:Name="label4" Content="Philosopher" HorizontalAlignment="Left" Margin="51,180,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label2" Content="Philosopher" HorizontalAlignment="Left" Margin="665,573,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.526,0.346"/>
+        <Label x:Name="label3" Content="Philosopher" HorizontalAlignment="Left" Margin="51,565,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label1" Content="Philosopher" HorizontalAlignment="Left" Margin="590,180,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label0" Content="Philosopher" HorizontalAlignment="Left" Margin="485,36,0,0" VerticalAlignment="Top" RenderTransformOrigin="3.132,-0.423"/>
 
 
     </Grid>
