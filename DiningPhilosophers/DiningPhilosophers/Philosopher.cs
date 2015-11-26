@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿
 using System.Threading;
-using System.Threading.Tasks;
+
 
 namespace DiningPhilosophers
 {
     public delegate void Sender(object sender, PhilosopherEventArgs e);
 
-    enum Fork
+    enum ForkSelect
     {
         Left,
         Right
@@ -17,91 +14,121 @@ namespace DiningPhilosophers
 
     class Philosopher
     {
-        public Philosopher(string name, ForkBool leftfork, ForkBool rightfork, Semaphore semaPhore)
+        public Philosopher(string name, Fork leftfork, Fork rightfork)
         {
-            semaphore = semaPhore;
             this.Name = name;
-            leftFork = leftfork as ForkBool;
-            rightFork = rightfork as ForkBool;
+            leftFork = leftfork;
+            rightFork = rightfork;
         }
 
 
-        public string Name { get; }
+        public string Name { get; set; }
         public event Sender Think;
         public event Sender EatEvent;
         public event Sender PutFork;
-        public event Sender TakedFork;
-
+        public event Sender GetFork;
 
         public void Action()
         {
             while (true)
             {
-                Thread.Sleep(random.Next(1000, 3000));
-                semaphore.WaitOne();
+                leftFork.mutex.WaitOne();
+                              
+                GetLeftFork();               
+                leftFork.mutex.ReleaseMutex();
 
-                Think(this, new PhilosopherEventArgs("Think and\n wait left fork"));
-                ThinkWaitLeftFork();
-
-                Think(this, new PhilosopherEventArgs("Think and wait right fork"));
-                ThinkWaitRightFork();
+                rightFork.mutex.WaitOne();
                 
+                GetRightFork();
+                rightFork.mutex.ReleaseMutex();
+
                 Eat();
 
+                leftFork.mutex.WaitOne();
                 PutLeftFork();
+                leftFork.mutex.ReleaseMutex();
 
+
+                rightFork.mutex.WaitOne();
                 PutRightFork();
-                semaphore.Release();
+                rightFork.mutex.ReleaseMutex();
             }
         }
 
+        Fork leftFork = null;
+        Fork rightFork = null;
+        bool forkInLeftHand = false;
+        bool forkInRightHand = false;
+
         private void PutRightFork()
         {
-            PutFork(this, new PhilosopherEventArgs("Put right fork",Fork.Right));
-            Thread.Sleep(random.Next(1000,3000));
+            if (forkInRightHand)
+            {
+                rightFork.isUsing = false;
+                forkInRightHand = false;
+                PutFork(this, new PhilosopherEventArgs("Put right fork", ForkSelect.Right));
+                Thread.Sleep(2000);
+            }
+            
         }
 
         private void PutLeftFork()
         {
-            PutFork(this, new PhilosopherEventArgs("Put right fork", Fork.Left));
-            Thread.Sleep(random.Next(1000, 3000));
+            if (forkInLeftHand)
+            {
+                leftFork.isUsing = false;
+                forkInLeftHand = false;
+                PutFork(this, new PhilosopherEventArgs("Put right fork", ForkSelect.Left));
+                Thread.Sleep(2000);
+            }
+            
         }
 
         private void Eat()
         {
-            EatEvent(this, new PhilosopherEventArgs("I'm Eat"));
-            Thread.Sleep(5000);
+            if (forkInLeftHand && forkInRightHand)
+            {
+                EatEvent(this, new PhilosopherEventArgs("I'm Eat"));
+                Thread.Sleep(4000);
+            }
+            
         }
 
-        private void ThinkWaitRightFork()
+        private void GetRightFork()
         {
-            while (true)
+            Think(this, new PhilosopherEventArgs("Think and\n wait left fork"));
+            int i = 500;
+            while (i > 0)
             {
-                if (rightFork.Fork)
+                --i;
+                if (!rightFork.isUsing && forkInLeftHand && !forkInRightHand)
                 {
-                    TakedFork(this, new PhilosopherEventArgs("Taked right fork",Fork.Right));
-                    break;
+                    rightFork.isUsing = true;
+                    forkInRightHand = true;
+                    GetFork(this, new PhilosopherEventArgs("Taked right fork",ForkSelect.Right));
+                    Thread.Sleep(2000);
+                    return; 
                 }
             }
-            Thread.Sleep(random.Next(1000, 3000));
+            
         }
 
-        private void ThinkWaitLeftFork()
+        private void GetLeftFork()
         {
-            while (true)
+            Think(this, new PhilosopherEventArgs("Think and wait right fork"));
+            int i = 500;
+            while (i>0)
             {
-                if (leftFork.Fork)
+                --i;
+                if (!leftFork.isUsing && !forkInLeftHand)
                 {
-                    TakedFork(this, new PhilosopherEventArgs("Taked left fork", Fork.Left));
-                    break;
+                    leftFork.isUsing = true;
+                    forkInLeftHand = true;
+                    GetFork(this, new PhilosopherEventArgs("Taked left fork", ForkSelect.Left));
+                    Thread.Sleep(2000);
+                    return; 
                 }
             }
-            Thread.Sleep(random.Next(1000, 3000));
         }
-
-        ForkBool leftFork = null;
-        ForkBool rightFork = null;
-        Random random = new Random();
-        Semaphore semaphore = null;
     }
 }

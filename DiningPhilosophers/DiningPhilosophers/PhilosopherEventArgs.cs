@@ -26,8 +26,8 @@ namespace DiningPhilosophers
             this.obj1 = obj1;            
         }
 
-        public object obj1 { get; }
-        public object obj2 { get; }
-        public object obj3 { get; }
+        public object obj1 { get; set; }
+        public object obj2 { get; set; }
+        public object obj3 { get; set; }
     }
 }
