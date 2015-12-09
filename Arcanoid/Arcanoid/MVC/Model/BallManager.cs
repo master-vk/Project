@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Arcanoid.MVC.Model;
+using System.Threading;
 
 namespace Arcanoid
 {
+    public delegate void Delegate(object sender, SendEventArgs e);
     public enum Direction
     {
         NE,
@@ -17,7 +19,7 @@ namespace Arcanoid
 
     public class BallManager
     {
-
+        Mutex locker = new Mutex(false);
         // TODO testing to multithreading
         public BallManager(Space space, Layout layout)
         {
@@ -27,18 +29,19 @@ namespace Arcanoid
             ballsDirections = new Dictionary<string, Direction>();
             SetInitialDirections();
         }
-
+        public event Delegate Show;
         public void BallMoveNext()
         {
 
             for (int i = 0; i < balls.Count; ++i)
             {
-                //object o = i;
-                space.RefreshSpace();
+                object o = i;
+                //space.RefreshSpace();
                 //TODO create multitreading architecture this!!
-                //Task task = new Task(PeekNewPosition, o);
-                //task.Start();
-                PeekNewPosition(i);
+                Task task = new Task(PeekNewPosition, o);
+                task.Start();
+                //PeekNewPosition(i);
+
             }
         }
 
@@ -55,11 +58,20 @@ namespace Arcanoid
                 ballsDirections.Add(item.Name, Direction.NE);
             }
         }
-
         private void PeekNewPosition(object o)
         {
+            locker.WaitOne();
+
+            space.RefreshSpace();
             int i = (int)o;
+
             Move(i, CreatePredicator(i));
+
+            Show(this, new SendEventArgs(layout));
+            
+            locker.ReleaseMutex();
+            
+
         }
 
         private IPredictorable CreatePredicator(int i)
@@ -69,6 +81,7 @@ namespace Arcanoid
 
         private void Move(int i, IPredictorable mover)
         {
+
             var newPosition = mover.Peek(balls[i].Position);
 
             var border = space.GetBorder(newPosition);

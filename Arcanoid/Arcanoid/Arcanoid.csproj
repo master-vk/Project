@@ -63,6 +63,7 @@
     <Compile Include="MVC\Model\Predictors\PredictorSE.cs" />
     <Compile Include="MVC\Model\Predictors\PredictorSW.cs" />
     <Compile Include="MVC\Model\Reflector.cs" />
+    <Compile Include="MVC\Model\SendEventArgs.cs" />
     <Compile Include="MVC\View\Matrix.cs" />
     <Compile Include="MVC\Model\Model.cs" />
     <Compile Include="MVC\Model\Entities\Platform.cs" />

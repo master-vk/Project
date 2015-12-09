@@ -22,6 +22,7 @@ namespace Arcanoid
         {
             this.matrix = matrix;
             this.layout = layout;
+            space = new AbstractEntity[matrix.High, matrix.Long];
             InitializeSpace();
         }
         
@@ -85,7 +86,7 @@ namespace Arcanoid
 
         void InitializeSpace()
         {
-            space = new AbstractEntity[matrix.High, matrix.Long];
+            
             SetEmptySpace();
             SetBalls();
             SetBricks();

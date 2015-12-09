@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Arcanoid.MVC.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,8 +16,9 @@ namespace Arcanoid
             this.matrix = matrix;
         }
 
-        public void Visualize()
+        public void OnShow(object sender, SendEventArgs e)
         {
+            Matrix matrix = e.Matrix as Matrix;
             Printer.PrintMatrix(matrix);
         }
     }

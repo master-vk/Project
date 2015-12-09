@@ -11,7 +11,7 @@ namespace Arcanoid
         public FreeSpace(Position position)
         {
             base.Position = position;
-            base.Image = '.';
+            base.Image = ' ';
         }
     }
 }

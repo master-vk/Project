@@ -25,12 +25,12 @@ namespace Arcanoid
             while (true)
             {
                 ballManager.BallMoveNext();
-                break;
+                //break;
             }
             
         }
 
-        BallManager ballManager;
+        public BallManager ballManager;
         Layout layout;
         Space space;
     }

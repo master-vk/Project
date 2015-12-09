@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Arcanoid
@@ -10,6 +11,7 @@ namespace Arcanoid
     {
         public static void PrintMatrix(Matrix matrix)
         {
+            
             Console.Clear();
             for (int i = 0; i < matrix.High; i++)
             {
@@ -19,6 +21,7 @@ namespace Arcanoid
                 }
                 Console.WriteLine();
             }
+            //Thread.Sleep(50);
         }
     }
 }

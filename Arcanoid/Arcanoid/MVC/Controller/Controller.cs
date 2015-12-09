@@ -13,7 +13,7 @@ namespace Arcanoid
         {
             this.model = new Model();
             this.view = new View(model.matrix);
-
+            model.ballManager.Show += view.OnShow;
         }
         public void Run()
         {
@@ -21,9 +21,7 @@ namespace Arcanoid
             while (true)
             {
                 model.Run();
-                model.matrix.Refresh();
-                view.Visualize();
-                Thread.Sleep(100);
+               
             }
 
             
