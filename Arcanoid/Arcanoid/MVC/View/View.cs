@@ -1,23 +1,22 @@
 ﻿using Arcanoid.MVC.Model;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
+
 
 namespace Arcanoid
 {
     public delegate void ViewDelegate(object sender, SendEventArgs e);
     class View
     {
-        Matrix matrix;
-        public event ViewDelegate SendMove;
-        public View(Matrix matrix)
+        public View()
         {
-            this.matrix = matrix;
+            this.matrix = new Matrix();
         }
-        ConsoleKey key = new ConsoleKey();
+
+        public event ViewDelegate SendMove;
+
+        public int High { get { return this.matrix.High; } }
+        public int Long { get { return this.matrix.Long; } }
+
         public void Run()
         {
             while (true)
@@ -28,14 +27,15 @@ namespace Arcanoid
                 
             }
         }
+        //TODO: create timer
         public void OnShow(object sender, SendEventArgs e)
         {
-           
-                matrix = e.Matrix as Matrix;
-               
-            
-            
+            matrix = e.Matrix as Matrix;
             Printer.PrintMatrix(matrix);
         }
+
+        
+        Matrix matrix;
+        ConsoleKey key = new ConsoleKey();
     }
 }

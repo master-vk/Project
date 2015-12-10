@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Arcanoid.MVC.Model
 {
-    public class BorderLeft : AbstractBorder
+    public class BorderLeft : IBorderable
     {        
-        public override Direction ChangeDirection(Direction direction)
+        public Direction ChangeDirection(Direction direction)
         {
             switch (direction)
             {

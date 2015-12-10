@@ -11,42 +11,39 @@ namespace Arcanoid
     public delegate void ModelDelegate(object sender, SendEventArgs e);
     class Model
     {
-        public Model()
+        public Model(int HIGH, int LONG)
         {
-            this.layout = new Layout();
-            LayoutInitializer.Initialize(this.layout,new Matrix().High,new Matrix().Long);
-            this.matrix = new Matrix(this.layout);
-            this.space = new Space(matrix, layout);
-            this.ballManager = new BallManager(space, layout);
-            ballManager.Show += OnShow;
-            SendMove += space.OnSendMove;
+            this.layer = LayoutInitializer.Initialize(HIGH, LONG);
+            this.space = new Space(HIGH, LONG, layer);
+            this.ballManager = new BallManager(space, layer);
 
+            ballManager.SendChanges += OnShow;
+            SendMove += space.OnSendMove;
         }
-        // TODO delete Matrix and change on int
-        public Matrix matrix;
+        
         public void OnShow(object sender, SendEventArgs e)
         {
-            Show(this, new SendEventArgs(layout));
+            Show(this, new SendEventArgs(layer));
         }
+
         public void OnSendMove(object sender, SendEventArgs e)
         {
             SendMove(sender, e);
         }
+
         public event ModelDelegate Show;
         public event ModelDelegate SendMove;
+
         public void Run()
         {
             while (true)
             {
                 ballManager.BallMoveNext();
-                //break;
             }
-            
         }
 
         BallManager ballManager;
-       
-        Layout layout;
+        ILayerable layer;
         Space space;
     }
 }

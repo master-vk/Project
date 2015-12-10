@@ -11,18 +11,21 @@ namespace Arcanoid
     {
         public Controller()
         {
-            this.model = new Model();
-            this.view = new View(model.matrix);
+            this.view = new View();
+            this.model = new Model(view.High, view.Long);
+            
+
             model.Show += view.OnShow;
             view.SendMove += model.OnSendMove;
             t = new Thread(view.Run);
         }
-        Thread t;
+        
         public void Run()
         {
             t.Start();
             model.Run();
         }
+        Thread t;
         Model model;
         View view;
 

@@ -11,9 +11,7 @@ namespace Arcanoid
     {
         public static void PrintMatrix(Matrix matrix)
         {
-            
             Console.Clear();
-
             for (int i = 0; i < matrix.High; i++)
             {
                 for (int j = 0; j < matrix.Long; j++)
@@ -22,7 +20,9 @@ namespace Arcanoid
                 }
                 Console.WriteLine();
             }
-            Thread.Sleep(48);
+            //TODO: delete sleep
+            Thread.Sleep(42);
+
         }
     }
 }

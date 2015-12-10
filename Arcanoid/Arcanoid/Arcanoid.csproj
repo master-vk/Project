@@ -44,7 +44,7 @@
   <ItemGroup>
     <Compile Include="MVC\Model\Entities\AbstractEntity.cs" />
     <Compile Include="MVC\Model\Entities\Ball.cs" />
-    <Compile Include="MVC\Model\Borders\AbstractBorder.cs" />
+    <Compile Include="MVC\Model\Borders\IBorderable.cs" />
     <Compile Include="MVC\Model\BallManager.cs" />
     <Compile Include="MVC\Model\Entities\Brick.cs" />
     <Compile Include="MVC\Controller\Controller.cs" />
@@ -54,9 +54,10 @@
     <Compile Include="MVC\Model\Borders\BorderLeft.cs" />
     <Compile Include="MVC\Model\Borders\BorderRight.cs" />
     <Compile Include="MVC\Model\Borders\BorderTop.cs" />
+    <Compile Include="MVC\Model\Layers\ILayerable.cs" />
     <Compile Include="MVC\Model\Predictors\PredictorFactory.cs" />
-    <Compile Include="MVC\Model\Layout.cs" />
-    <Compile Include="MVC\Model\LayoutInitializer.cs" />
+    <Compile Include="MVC\Model\Layers\Layer.cs" />
+    <Compile Include="MVC\Model\Layers\LayerInitializer.cs" />
     <Compile Include="MVC\Model\Predictors\IPredictorable.cs" />
     <Compile Include="MVC\Model\Predictors\PredictorNE.cs" />
     <Compile Include="MVC\Model\Predictors\PredictorNW.cs" />
@@ -78,6 +79,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -6,11 +6,8 @@ using System.Threading.Tasks;
 
 namespace Arcanoid.MVC.Model
 {
-    public class BorderInside : IBorderable
+    public interface IBorderable
     {
-        public Direction ChangeDirection(Direction direction)
-        {
-            return direction;
-        }
+        Direction ChangeDirection(Direction direction);
     }
 }

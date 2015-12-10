@@ -5,9 +5,9 @@ using System.Text;
 
 namespace Arcanoid.MVC.Model
 {
-    public class BorderRight : AbstractBorder
+    public class BorderRight : IBorderable
     {        
-        public override Direction ChangeDirection(Direction direction)
+        public Direction ChangeDirection(Direction direction)
         {
             switch (direction)
             {

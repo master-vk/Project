@@ -8,7 +8,7 @@ namespace Arcanoid.MVC.Model
 {
     public static class Reflector
     {
-        public static AbstractBorder CreateBorder(Direction direction)
+        public static IBorderable CreateBorder(Direction direction)
         {
             switch (direction)
             {

@@ -15,111 +15,147 @@ namespace Arcanoid
         Left,
         Inside
     }
+
     public class Space
     {
         
-        public Space(Matrix matrix, Layout layout)
+        public Space(int HIGH, int LONG, ILayerable layer)
         {
-            this.matrix = matrix;
-            this.layout = layout;
-            space = new AbstractEntity[matrix.High, matrix.Long];
+            this.LONG = LONG;
+            this.HIGH = HIGH;
+            this.layer = layer;
+            space = new AbstractEntity[HIGH, LONG];
             InitializeSpace();
         }
+
         
 
         public AbstractEntity this[Position position]
         {
             get { return space[position.Y,position.X]; }
         }
-        
+
         public void RefreshSpace()
         {
             InitializeSpace();
         }
 
-        public AbstractBorder GetBorder(Position position)
+        public IBorderable GetBorder(Position position)
         {
-            if (IsInsideOfY(position) is BorderInside) //Border.Inside)
+            if (GetBorderOfY(position) is BorderInside) //Border.Inside)
             {               
-               return IsInsideOfX(position);               
+               return GetBorderOfX(position);               
             }
-            return IsInsideOfY(position);
+            return GetBorderOfY(position);
         }
 
-        Matrix matrix;
-        Layout layout;
+        public readonly int LONG;
+        public readonly int HIGH;
+
+        ILayerable layer;
         AbstractEntity[,] space;
 
-        private AbstractBorder IsInsideOfX(Position position)
+        private IBorderable GetBorderOfX(Position position)
         {
             if (position.X >= 0)
             {
-                if (position.X < matrix.Long - 1)
+                if (position.X < LONG - 1)
                 {
-                    return new BorderInside(); //Border.Inside;
+                    return new BorderInside(); 
                 }
                 else
                 {
-                    return new BorderRight(); //Border.Bottom;
+                    return new BorderRight(); 
                 }
             }
-            return new BorderLeft(); //Border.Top;
+            return new BorderLeft(); 
             
         }
+
         public void OnSendMove(object sender, SendEventArgs e)
         {
-            if (e.Key == ConsoleKey.LeftArrow)
+            if (IsLeft(e))
             {
-                for (int i = 0; i < layout.Platforms.Count; i++)
-                {
-                    for (int j = 0; j < layout.Platforms[i].PlatformElements.Count(); j++)
-                    {
-                        layout.Platforms[i].PlatformElements[j].Position = new Position(
-                            layout.Platforms[i].PlatformElements[j].Position.Y,
-                            layout.Platforms[i].PlatformElements[j].Position.X - 1);
-
-                    }
-                    matrix.Refresh();
-                }
-                
+                MovePlatformsLeft();
             }
-            if (e.Key == ConsoleKey.RightArrow)
+            if (IsRight(e))
             {
-                for (int i = 0; i < layout.Platforms.Count; i++)
-                {
-                    for (int j = 0; j < layout.Platforms[i].PlatformElements.Count(); j++)
-                    {
-                        layout.Platforms[i].PlatformElements[j].Position = new Position(
-                            layout.Platforms[i].PlatformElements[j].Position.Y,
-                            layout.Platforms[i].PlatformElements[j].Position.X + 1);
-
-                    }
-                    matrix.Refresh();
-                }
-
+                MovePlatformsRight();
             }
         }
-        private AbstractBorder IsInsideOfY(Position position)
+
+        private void MovePlatformsRight()
+        {
+            for (int i = 0; i < layer.Platforms.Count; i++)
+            {
+                MovePlatFormRight(i);
+            }
+        }
+
+        private void MovePlatformsLeft()
+        {
+            for (int i = 0; i < layer.Platforms.Count; i++)
+            {
+                MovePlatformLeft(i);
+            }
+        }
+
+        private static bool IsRight(SendEventArgs e)
+        {
+            return e.Key == ConsoleKey.RightArrow;
+        }
+
+        private static bool IsLeft(SendEventArgs e)
+        {
+            return e.Key == ConsoleKey.LeftArrow;
+        }
+
+        private void MovePlatformLeft(int i)
+        {
+            for (int j = 0; j < layer.Platforms[i].PlatformElements.Count(); j++)
+            {
+                if (layer.Platforms[i].PlatformElements[layer.Platforms[i].PlatformElements.Count() - 1].Position.X > 0)
+                {
+                    layer.Platforms[i].PlatformElements[j].Position = new Position(
+                        layer.Platforms[i].PlatformElements[j].Position.Y, 
+                        layer.Platforms[i].PlatformElements[j].Position.X - 1);
+                }
+            }
+        }
+
+        void MovePlatFormRight(int i)
+        {
+            if (layer.Platforms[i].PlatformElements[0].Position.X < LONG - 1)
+            {
+                for (int j = 0; j < layer.Platforms[i].PlatformElements.Count(); j++)
+                {
+                    layer.Platforms[i].PlatformElements[j].Position = new Position(
+                        layer.Platforms[i].PlatformElements[j].Position.Y, 
+                        layer.Platforms[i].PlatformElements[j].Position.X + 1);
+                }
+            }
+        }
+
+        private IBorderable GetBorderOfY(Position position)
         {
             if (position.Y >= 0)
             {
-                if (position.Y <= matrix.High - 1)
+                if (position.Y <= HIGH - 1)
                 {
-                    return new BorderInside();//Border.Inside;
+                    return new BorderInside();
                 }
                 else
                 {
-                    return new BorderBottom(); //Border.Right;
+                    return new BorderBottom(); 
                 }
             }
-            return new BorderTop(); //Border.Left;
+            return new BorderTop(); 
         }
 
         
 
         void InitializeSpace()
         {
-            
             SetEmptySpace();
             SetBalls();
             SetBricks();
@@ -128,9 +164,9 @@ namespace Arcanoid
 
         void SetEmptySpace()
         {
-            for (int i = 0; i < matrix.High; i++)
+            for (int i = 0; i < HIGH; i++)
             {
-                for (int j = 0; j < matrix.Long; j++)
+                for (int j = 0; j < LONG; j++)
                 {
                     space[i, j] = new FreeSpace(new Position(i, j));
                 }
@@ -139,7 +175,7 @@ namespace Arcanoid
 
         void SetBalls()
         {
-            foreach (var item in layout.Balls)
+            foreach (var item in layer.Balls)
             {
                 space[item.Position.Y, item.Position.X] = item;
             }
@@ -147,7 +183,7 @@ namespace Arcanoid
 
         void SetBricks()
         {
-            foreach (var item in layout.Bricks)
+            foreach (var item in layer.Bricks)
             {
                 space[item.Position.Y, item.Position.X] = item;
             }
@@ -155,7 +191,7 @@ namespace Arcanoid
 
         private void SetPlatforms()
         {
-            foreach (var platform in layout.Platforms)
+            foreach (var platform in layer.Platforms)
             {
                 foreach (var item in platform.PlatformElements)
                 {

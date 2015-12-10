@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Arcanoid.MVC.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,14 +13,12 @@ namespace Arcanoid
         {
 
         }
-        public Matrix(Layout layout)
+
+        public Matrix(ILayerable layout)
         {
             this.layout = layout;
+            this.Refresh();
         }
-        
-
-        public const int LONG = 30;
-        public const int HIGH = 20;
 
         public int Long { get { return LONG; } }
         public int High { get { return HIGH; } }
@@ -42,15 +41,18 @@ namespace Arcanoid
             }
         }
 
-
-        Layout layout;
-        char[,] matrix = new char[HIGH, LONG];
-
         public void Refresh()
         {
             SetEmptyMatrix();
             SetLayoutOnMatrix();
         }
+
+
+        ILayerable layout;
+        char[,] matrix = new char[HIGH, LONG];
+        const int LONG = 20;
+        const int HIGH = 20;
+
         void SetLayoutOnMatrix()
         {
             foreach (var item in layout.Balls)
