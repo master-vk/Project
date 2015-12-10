@@ -24,7 +24,7 @@ namespace Arcanoid
                 }
             }
         }
-
+        
         public void RemoveBrick(Position position)
         {
             var findElement = (from b in Bricks

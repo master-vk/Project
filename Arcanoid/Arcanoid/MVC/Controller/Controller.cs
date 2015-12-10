@@ -13,18 +13,15 @@ namespace Arcanoid
         {
             this.model = new Model();
             this.view = new View(model.matrix);
-            model.ballManager.Show += view.OnShow;
+            model.Show += view.OnShow;
+            view.SendMove += model.OnSendMove;
+            t = new Thread(view.Run);
         }
+        Thread t;
         public void Run()
         {
-            //TODO move dublicate balls
-            while (true)
-            {
-                model.Run();
-               
-            }
-
-            
+            t.Start();
+            model.Run();
         }
         Model model;
         View view;

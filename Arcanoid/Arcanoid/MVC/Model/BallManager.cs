@@ -19,7 +19,7 @@ namespace Arcanoid
 
     public class BallManager
     {
-        Mutex locker = new Mutex(false);
+        Semaphore locker = new Semaphore(1,1);
         // TODO testing to multithreading
         public BallManager(Space space, Layout layout)
         {
@@ -40,7 +40,7 @@ namespace Arcanoid
                 //TODO create multitreading architecture this!!
                 Task task = new Task(PeekNewPosition, o);
                 task.Start();
-                //PeekNewPosition(i);
+                PeekNewPosition(i);
 
             }
         }
@@ -60,17 +60,16 @@ namespace Arcanoid
         }
         private void PeekNewPosition(object o)
         {
-            locker.WaitOne();
 
+            
             space.RefreshSpace();
             int i = (int)o;
 
             Move(i, CreatePredicator(i));
-
-            Show(this, new SendEventArgs(layout));
             
-            locker.ReleaseMutex();
             
+            
+        
 
         }
 
@@ -81,28 +80,42 @@ namespace Arcanoid
 
         private void Move(int i, IPredictorable mover)
         {
-
-            var newPosition = mover.Peek(balls[i].Position);
-
-            var border = space.GetBorder(newPosition);
-
-            if (Inside(border))
+            while (true)
             {
-                if (IsFreeSpace(newPosition))
-                {
-                    balls[i].Position = newPosition;
-                    SaveChanges();
-                    return;
-                }
-                else if (IsBrick(newPosition))
-                {
-                    layout.RemoveBrick(newPosition);//TODO: create event
-                }
-                border = Reflector.CreateBorder(ballsDirections[balls[i].Name]);
-            }
+                var newPosition = mover.Peek(balls[i].Position);
 
-            ballsDirections[balls[i].Name] = border.ChangeDirection(ballsDirections[balls[i].Name]);
-            Move(i, CreatePredicator(i));
+                var border = space.GetBorder(newPosition);
+
+                if (Inside(border))
+                {
+                    if (IsFreeSpace(newPosition))
+                    {
+                        balls[i].Position = newPosition;
+                        locker.WaitOne();
+                        SaveChanges();
+                        Show(this, new SendEventArgs(layout));
+                        
+                        locker.Release();
+                        break;
+                        //return;
+                    }
+                    else if (IsBrick(newPosition))
+                    {
+                        locker.WaitOne();
+                        layout.RemoveBrick(newPosition);
+                        SaveChanges();
+                        Show(this, new SendEventArgs(layout));
+                        
+                        locker.Release();
+                    }
+                    border = Reflector.CreateBorder(ballsDirections[balls[i].Name]);
+                }
+
+                ballsDirections[balls[i].Name] = border.ChangeDirection(ballsDirections[balls[i].Name]);
+                mover = CreatePredicator(i);
+            }
+            
+            //Move(i, CreatePredicator(i));
 
             SaveChanges();
         }

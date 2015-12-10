@@ -66,6 +66,39 @@ namespace Arcanoid
             return new BorderLeft(); //Border.Top;
             
         }
+        public void OnSendMove(object sender, SendEventArgs e)
+        {
+            if (e.Key == ConsoleKey.LeftArrow)
+            {
+                for (int i = 0; i < layout.Platforms.Count; i++)
+                {
+                    for (int j = 0; j < layout.Platforms[i].PlatformElements.Count(); j++)
+                    {
+                        layout.Platforms[i].PlatformElements[j].Position = new Position(
+                            layout.Platforms[i].PlatformElements[j].Position.Y,
+                            layout.Platforms[i].PlatformElements[j].Position.X - 1);
+
+                    }
+                    matrix.Refresh();
+                }
+                
+            }
+            if (e.Key == ConsoleKey.RightArrow)
+            {
+                for (int i = 0; i < layout.Platforms.Count; i++)
+                {
+                    for (int j = 0; j < layout.Platforms[i].PlatformElements.Count(); j++)
+                    {
+                        layout.Platforms[i].PlatformElements[j].Position = new Position(
+                            layout.Platforms[i].PlatformElements[j].Position.Y,
+                            layout.Platforms[i].PlatformElements[j].Position.X + 1);
+
+                    }
+                    matrix.Refresh();
+                }
+
+            }
+        }
         private AbstractBorder IsInsideOfY(Position position)
         {
             if (position.Y >= 0)

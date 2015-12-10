@@ -13,6 +13,7 @@ namespace Arcanoid
         {
             
             Console.Clear();
+
             for (int i = 0; i < matrix.High; i++)
             {
                 for (int j = 0; j < matrix.Long; j++)
@@ -21,7 +22,7 @@ namespace Arcanoid
                 }
                 Console.WriteLine();
             }
-            //Thread.Sleep(50);
+            Thread.Sleep(48);
         }
     }
 }

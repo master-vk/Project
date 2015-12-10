@@ -19,7 +19,7 @@ namespace Arcanoid
         {
             layout.Balls.AddRange(new List<Ball>
             {
-                new Ball(new Position(15, 6),"ball1"),
+                new Ball(new Position(15, 7),"ball1"),
                 new Ball(new Position(1, 6),"ball3"),
                 new Ball(new Position(2, 9),"ball2" )
             });
