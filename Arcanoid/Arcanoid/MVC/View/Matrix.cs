@@ -50,7 +50,7 @@ namespace Arcanoid
 
         ILayerable layout;
         char[,] matrix = new char[HIGH, LONG];
-        const int LONG = 20;
+        const int LONG = 15;
         const int HIGH = 20;
 
         void SetLayoutOnMatrix()

@@ -1,0 +1,288 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Arcanoid.Controller">
+    <Position X="10" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQQAAAAIAAI=</HashCode>
+      <FileName>MVC\Controller\Controller.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="model" />
+      <Field Name="view" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Arcanoid.Layer">
+    <Position X="22.25" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAAAABAAQAAABAAQAAQAEAAAACAAAAAgAAAA=</HashCode>
+      <FileName>MVC\Model\Layers\Layer.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Field Name="balls" />
+      <Field Name="bricks" />
+      <Field Name="platforms" />
+    </ShowAsCollectionAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Arcanoid.LayoutInitializer">
+    <Position X="12" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>MVC\Model\Layers\LayerInitializer.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="layer" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Arcanoid.AbstractEntity">
+    <Position X="21.75" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAgAAAAIAAAEAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>MVC\Model\Entities\AbstractEntity.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="position" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Arcanoid.Ball">
+    <Position X="20.75" Y="12.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MVC\Model\Entities\Ball.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Arcanoid.Brick">
+    <Position X="23" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MVC\Model\Entities\Brick.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Arcanoid.FreeSpace">
+    <Position X="18.25" Y="12" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MVC\Model\Entities\FreeSpace.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Arcanoid.Platform">
+    <Position X="25.5" Y="15" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAgAAAA=</HashCode>
+      <FileName>MVC\Model\Entities\Platform.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Field Name="platform" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Arcanoid.PlatformElement">
+    <Position X="25.5" Y="12.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MVC\Model\Entities\PlatformElement.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Arcanoid.Position">
+    <Position X="19" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABgAAAAYAA=</HashCode>
+      <FileName>MVC\Model\Entities\Position.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Arcanoid.MVC.Model.PredictorFactory">
+    <Position X="15.5" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MVC\Model\Predictors\PredictorFactory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Arcanoid.MVC.Model.PredictorNE" BaseTypeListCollapsed="true">
+    <Position X="17.5" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MVC\Model\Predictors\PredictorNE.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Arcanoid.MVC.Model.PredictorNW" BaseTypeListCollapsed="true">
+    <Position X="19.25" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MVC\Model\Predictors\PredictorNW.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Arcanoid.MVC.Model.PredictorSE" BaseTypeListCollapsed="true">
+    <Position X="15.75" Y="17.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MVC\Model\Predictors\PredictorSE.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Arcanoid.MVC.Model.PredictorSW" BaseTypeListCollapsed="true">
+    <Position X="17.5" Y="17.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MVC\Model\Predictors\PredictorSW.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Arcanoid.BallManager">
+    <Position X="9.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAIAAAAAEIAgIAEQAAAAADQIAAAQAAAACAABBABAEAA=</HashCode>
+      <FileName>MVC\Model\BallManager.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="space" />
+      <Field Name="layer" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Field Name="balls" />
+      <Field Name="ballsDirections" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Arcanoid.Model">
+    <Position X="13.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEAAgAAAABAAAAAAAAAAEAAAAgAAABAAEAAI=</HashCode>
+      <FileName>MVC\Model\Model.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="ballManager" />
+      <Field Name="layer" />
+      <Field Name="space" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Arcanoid.Space">
+    <Position X="16" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAggAAAAAigAEQACAAAAAgUIEABAgAAgAAABUAAAAA=</HashCode>
+      <FileName>MVC\Model\Space.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="layer" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Arcanoid.MVC.Model.Reflector">
+    <Position X="13.5" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MVC\Model\Reflector.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Arcanoid.MVC.Model.SendEventArgs">
+    <Position X="16.25" Y="10" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAEACAAAAAgAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MVC\Model\SendEventArgs.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="matrix" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Arcanoid.Matrix">
+    <Position X="18" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAgAEAAABAAAAACgAAACAAAAABAAAAAAAACIAAAAA=</HashCode>
+      <FileName>MVC\View\Matrix.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="layout" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Arcanoid.Printer">
+    <Position X="6.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAA=</HashCode>
+      <FileName>MVC\View\Printer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Arcanoid.View">
+    <Position X="6.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEAEAAAAAAAAgAEACAAAAAAAAAAAAAAAAAEAAI=</HashCode>
+      <FileName>MVC\View\View.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="matrix" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Arcanoid.MVC.Model.BorderBottom" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="21.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAA=</HashCode>
+      <FileName>MVC\Model\Borders\BorderBottom.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Arcanoid.MVC.Model.BorderInside" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="23.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAA=</HashCode>
+      <FileName>MVC\Model\Borders\BorderInside.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Arcanoid.MVC.Model.BorderLeft" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAA=</HashCode>
+      <FileName>MVC\Model\Borders\BorderLeft.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Arcanoid.MVC.Model.BorderRight" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="21.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAA=</HashCode>
+      <FileName>MVC\Model\Borders\BorderRight.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Arcanoid.MVC.Model.BorderTop" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="23.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAA=</HashCode>
+      <FileName>MVC\Model\Borders\BorderTop.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Interface Name="Arcanoid.MVC.Model.ILayerable">
+    <Position X="12" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAQAAABAAAAAAAEAAAACAAAAAAAAAA=</HashCode>
+      <FileName>MVC\Model\Layers\ILayerable.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Arcanoid.MVC.Model.IPredictorable">
+    <Position X="15.75" Y="18.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MVC\Model\Predictors\IPredictorable.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Arcanoid.MVC.Model.IBorderable" Collapsed="true">
+    <Position X="21.5" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAA=</HashCode>
+      <FileName>MVC\Model\Borders\IBorderable.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="Arcanoid.Direction">
+    <Position X="6" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAACEAAAAAAAAAAAQgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MVC\Model\BallManager.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Arcanoid.Border">
+    <Position X="3.75" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAQAAAAAAAIAAAACACBAAAAAAA=</HashCode>
+      <FileName>MVC\Model\Space.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

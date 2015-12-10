@@ -1,0 +1,5 @@
+C:\Users\Вадим\Documents\Visual Studio 2015\Projects\Arcanoid\Arcanoid\bin\Release\Arcanoid.exe.config
+C:\Users\Вадим\Documents\Visual Studio 2015\Projects\Arcanoid\Arcanoid\bin\Release\Arcanoid.exe
+C:\Users\Вадим\Documents\Visual Studio 2015\Projects\Arcanoid\Arcanoid\bin\Release\Arcanoid.pdb
+C:\Users\Вадим\Documents\Visual Studio 2015\Projects\Arcanoid\Arcanoid\obj\Release\Arcanoid.exe
+C:\Users\Вадим\Documents\Visual Studio 2015\Projects\Arcanoid\Arcanoid\obj\Release\Arcanoid.pdb

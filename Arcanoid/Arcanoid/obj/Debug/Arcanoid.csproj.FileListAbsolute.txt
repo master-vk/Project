@@ -3,3 +3,4 @@ c:\users\вадим\documents\visual studio 2015\Projects\Arcanoid\Arcanoid\bin\
 c:\users\вадим\documents\visual studio 2015\Projects\Arcanoid\Arcanoid\bin\Debug\Arcanoid.pdb
 c:\users\вадим\documents\visual studio 2015\Projects\Arcanoid\Arcanoid\obj\Debug\Arcanoid.exe
 c:\users\вадим\documents\visual studio 2015\Projects\Arcanoid\Arcanoid\obj\Debug\Arcanoid.pdb
+C:\Users\Вадим\Documents\Visual Studio 2015\Projects\Arcanoid\Arcanoid\obj\Debug\Arcanoid.csprojResolveAssemblyReference.cache

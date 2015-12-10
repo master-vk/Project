@@ -10,6 +10,7 @@ using System.Threading;
 namespace Arcanoid
 {
     public delegate void Delegate(object sender, SendEventArgs e);
+
     public enum Direction
     {
         NE,
@@ -38,7 +39,8 @@ namespace Arcanoid
             
             for (int i = 0; i < balls.Count; ++i)
             {
-#if MultyThreads
+
+#if             MultyThreads
                 
                 o = i;
                 task = new Task(PeekNewPosition, o);
