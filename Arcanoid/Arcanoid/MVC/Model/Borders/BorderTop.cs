@@ -15,6 +15,7 @@ namespace Arcanoid.MVC.Model
                 case Direction.NE: return Direction.SE;
                 case Direction.NW: return Direction.SW;
                 default: return direction;
+				
             }
         }
     }
